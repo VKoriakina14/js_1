@@ -1,36 +1,50 @@
-/* Task - 1
-Виберіть підходящі імена для змінних та створіть їх в коді.
-        1) Змінна для зберігання дати створеного файла.
-        2) Змінна для зберігання ім'я файлу. 
-        3) Змінна для зберігання кількості помилок. */
-
+ //Task - 1
+//Виберіть підходящі імена для змінних та створіть їх в коді.//
+      //  1) Змінна для зберігання дати створеного файла.//
+         let dateForFile;
+         dateForFile = 15;
+         console.log(dateForFile);
+    
+    // 2) Змінна для зберігання ім'я файлу. //
+        let savingFile;
+        savingFile = "2324";
+        console.log(savingFile);
+      
+        // 3) Змінна для зберігання кількості помилок. //
+        let savingErrors;
+        savingErrors = 1234;
+        console.log(savingErrors);
 /* Task - 2
         1) Об'явіть дві змінні: login и name
         2) Змінній name в якості значення привласніть своє ім'я
         3) Скопіюйте значення із змінної name в login
         4) Виведіть в консолі  значення змінної login */
-
+        let login;
+        let nameUser;
+        nameUser = 'Yehor';
+        login = nameUser;
+        console.log(login);
 /* Task - 3
         Створіть 3 змінні в одному рядку з різними значеннями */
-
+        let log12 =12, log123 = 34, log432 = "Створюй адекватні назви для змінних!";
+        console.log(log12, log123, log432);
 /* Task - 4
         Створіть змінну з іменем myUndefined і встановіть її значення рівним undefined без використання слова "undefined" 
         %%% https://www.tiktok.com/@devslopes/video/7150509431485107498 %%%
         */
-
+        var myUndefined;
+        console.log(myUndefined);
 /* Task - 5
         Вам потрібно записати рядок "I'm lovin' it!" у змінну resultLine.
-
         - Значення змінних line1, line2, line3 не змінювати.
 */
-
-/*    let line1 = "Lovin";
+       let line1 = "Lovin";
         let line2 = "It!";
         let line3 = "I'm";
 
-        let resultLine = ""; //change this line
+        let resultLine = line3 + ' ' + line1 + ' ' + line2; //change this line
 
-        console.log(resultLine); */
+        console.log(resultLine); 
 
 /* Task - 6
         Вам потрібно записати рядок "70" у змінну digits.
@@ -56,12 +70,12 @@
         - Використовуйте bigAmount, greatAmount та метод Integer() для ініціалізації змінної hugeAmount.
 */
 
-/*  let bigAmount = "500";
+   let bigAmount = "500";
         let greatAmount = "100000";
 
-        let hugeAmount = 0; //change this line
+        let hugeAmount = ; //change this line
 
-        console.log(hugeAmount); */
+        console.log(hugeAmount); 
 
 /* Task - 8
         Змінити код так, щоб замість значень рядків виводилась довжина кожного рядка.
