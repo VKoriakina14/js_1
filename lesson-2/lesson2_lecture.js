@@ -368,8 +368,35 @@ console.log(hotelName);
 
 */
 
+
 /*
 const value = prompt("Please enter a number!");
 console.log(typeof value); // "string"
 console.log(value); // "5"
 */
+
+
+// TRY...CATCH
+
+try {
+ // Спробуємо виконати код, який може викликати помилку
+ let result = 10 / 0; // Це викличе помилку (ділення на нуль)
+ console.log(result);
+} catch (error) {
+ // Якщо виникла помилка, обробляємо її тут
+ console.log("Помилка:", error.message);
+}
+
+
+// TRY...CATCH...FANALLY
+try {
+ // Спробуємо виконати код, який може викликати помилку
+ let result = 10 / 2; // Все ок
+ console.log(result);
+} catch (error) {
+ // Якщо виникла помилка, обробляємо її тут
+ console.log("Помилка:", error.message);
+} finally {
+ // Цей код виконується завжди, незалежно від того, чи була помилка
+ console.log("Цей блок виконується завжди");
+}
