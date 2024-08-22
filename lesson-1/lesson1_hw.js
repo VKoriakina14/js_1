@@ -1,19 +1,19 @@
  //Task - 1
 //Виберіть підходящі імена для змінних та створіть їх в коді.//
       //  1) Змінна для зберігання дати створеного файла.//
-         let dateForFile;
-         dateForFile = 15;
-         console.log(dateForFile);
+         let fileCreationDate;
+         fileCreationDate = 15;
+         console.log(fileCreationDate);
     
     // 2) Змінна для зберігання ім'я файлу. //
-        let savingFile;
-        savingFile = "2324";
-        console.log(savingFile);
+        let fileName;
+        fileName = "2324";
+        console.log(fileName);
       
         // 3) Змінна для зберігання кількості помилок. //
-        let savingErrors;
-        savingErrors = 1234;
-        console.log(savingErrors);
+        let numberOfErrors;
+        numberOfErrors = 1234;
+        console.log(numberOfErrors);
 /* Task - 2
         1) Об'явіть дві змінні: login и name
         2) Змінній name в якості значення привласніть своє ім'я
@@ -53,13 +53,13 @@
         - Значення змінних x, y, z не змінюйте.
 */
 
-/* let x = 3;
+    let x = 3;
     let y = 4;
     let z = 0;
 
-    let digits =  ""; //change this line
+    let digits = "" + (x + y) + z;; //change this line
 
-    console.log(digits); */
+    console.log(digits); 
 
 /* Task - 7
         Вам потрібно записати число 100500 у змінну hugeAmount.
@@ -70,10 +70,10 @@
         - Використовуйте bigAmount, greatAmount та метод Integer() для ініціалізації змінної hugeAmount.
 */
 
-   let bigAmount = "500";
+     let bigAmount = "500";
         let greatAmount = "100000";
 
-        let hugeAmount = ; //change this line
+        let hugeAmount = Number(bigAmount) + Number(greatAmount); //change this line
 
         console.log(hugeAmount); 
 
@@ -86,13 +86,13 @@
         - Програма повинна вивести три числа, кожне з нового рядка.
 */
 
-/* let emptyString = "";
+let emptyString = "";
 
-        console.log(emptyString);
-        console.log("Think Different");
-        console.log((emptyString + 2 + 2 + "22")); */
+        console.log(emptyString.length);
+        console.log("Think Different".length);
+        console.log((emptyString + 2 + 2 + "22").length);
 
-/* Task - 9
+/*Task - 9
         На екран виводиться 4 рядки. Усі вони є яскравим прикладом зловживання великими літерами.
         Внесіть зміни у код, щоб усі літери у цих рядках були маленькими.
 
@@ -101,15 +101,15 @@
         - Для чотирьох рядків, переданих у метод console.log, слід викликати метод toLowerCase.
 */
 
-/*   let title = "Senior Lead Principal Data Analyst";
+  let title = "Senior Lead Principal Data Analyst";
         let degree = "In college, I Majored in Economics Science and Minored in Musician Studies.";
         let career = "Data Scientist With 3+ Years of Experience in Big Data Analytics.";
 
-        console.log("RESUME");
-        console.log("TITLE: " + title);
-        console.log("DEGREE: " + degree);
-        console.log("CAREER: " + career);
- */
+        console.log("RESUME".toLowerCase());
+        console.log("TITLE: " + title.toLowerCase());
+        console.log("DEGREE: " + degree.toLowerCase());
+        console.log("CAREER: " + career.toLowerCase());
+ 
 
 /* Task - 10
         На екран виводиться 3 рядки. Усі вони є яскравим прикладом зловживання великими літерами.
@@ -119,12 +119,12 @@
         - Викличте метод toUpperCase для трьох рядків, переданих методу console.log.
 */
 
-/* let caps = "if I type in caps ";
-    let fbi = "фбр";
+         let caps = "if I type in caps ";
+         let fbi = "фбр";
 
-    console.log(fbi);
-    console.log("Гекльберрі Фінн");
-    console.log(caps + "they know I mean business"); */
+    console.log(fbi.toUpperCase());
+    console.log("Гекльберрі Фінн".toUpperCase());
+    console.log(caps.toUpperCase() + "they know I mean business".toUpperCase()); 
 
 /* Task - 11
         Додайте операції множення, ділення та віднімання.
