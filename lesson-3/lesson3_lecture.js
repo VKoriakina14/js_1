@@ -1,5 +1,5 @@
 // 1. Чи буде вивенено "Привіт"? 
-/* if ("0") {
+/* if ("") {
     console.log("Привіт");
 } */
 
@@ -13,17 +13,17 @@ console.log(c); */
 // 3. Який буде результат виразів? 
 /* console.log(5 > 4);
 console.log("Ananas" > "Mango");
-console.log("2" > "12");
+console.log("2" > "12");  // 50 > 49 = true
 console.log(undefined == null);
-console.log(undefined === null);
- */
+console.log(undefined === null); */
+
 
 // 4. Які кінцеві значення всіх змінних а та x після виконання коду? 
 /* let a = 2;
 let x = 1 + (a * 2);
-console.log("a = " + a);
-console.log("x = " + x);
- */
+console.log(`a = ${a}`);
+console.log("x = " + x); */
+
 
 // 5. Які кінцеві значення всіх змінних q, r, w та d після виконання коду? 
 /* let q = 1; 
@@ -34,8 +34,8 @@ let d = r++;
 console.log("q = " + q);
 console.log("r = " + r);
 console.log("w = " + w);
-console.log("d = " + d) */
-
+console.log("d = " + d)
+ */
 
 // Цікавий приклад використання префіксного та постфіксного інкремента
 
@@ -59,7 +59,9 @@ console.log("b = " + b);  */
 Ітерація - одноразове виконання тіла циклу.
 
 Умова виходу - вираз, що визначає, чи буде в черговий раз виконуватися ітерація, або цикл завершиться.
+
 Лічильник - змінна, що зберігає поточний номер ітерації. 
+
 Цикл не обов'язково містить лічильник, і він не повинен бути один, умова виходу з циклу може залежати
 від декількох змінних, що змінюються в циклі.
  */
@@ -89,15 +91,15 @@ while (i < 10) {
 /* while (false) {
     console.log('Hello JS');
 } 
-   console.log('Bye-bye JS')  */
+   console.log('Bye-bye JS') 
+ */
 
-// може затягнутися
 /* while (true) {
     console.log('Hello JS');
-    break;
+    break; 
 } 
-   console.log('Bye-bye JS')  */
-
+   console.log('Bye-bye JS') 
+ */
 
 // тому, циклу потрібно розуміти, коли він зупиниться, наприклад, коли настане false
 /* let i = 10;
@@ -109,25 +111,25 @@ while (i) {
 
  //  Створимо лічильник.
 
-/* 
-  let counter = 0;
+
+/*   let counter = 0;
 
   while (counter < 10) {
     console.log("counter: ", counter);
     counter += 1;
-  }
-   */
+  } */
+  
 
 // Будемо заповнювати місця в готелі доти, доки поточна кількість клієнтів не буде дорівнювати максимально можливій.
 
 /* let clientCounter = 18;
 const maxClients = 25;
 
-while (clientCounter < maxClients) {
+while (clientCounter  < maxClients) {
   console.log(clientCounter);
   clientCounter += 1;
-}
- */
+} */
+
 
 
  // Do...while​
@@ -152,19 +154,19 @@ console.log("Після закінчення циклу i = " + i); */
 
 /* do {
     console.log("Hello JS!");
-} while (false);*/
+} while (false); */
 
 
 // на практиці, як може виглядати: 
 
-/* let password = "";
+let password = "";
 
 do {
   password = prompt("Введіть пароль довший 4-х символів", "");
 } while (password.length < 5);
 
 console.log("Ввели пароль: ", password);
- */
+
 
 
 
@@ -270,8 +272,8 @@ for(let i = 0; i <= 9; i++) {
         }
 
     console.log("------------------------------------")
-} */
-
+}
+ */
 
 // Мітки для циклів
 
@@ -542,3 +544,7 @@ function greet(name) {
   // Ми передали посилання на функцію greet як аргумент, тому вона буде присвоєна в параметр callback 
   // і викликана всередині функції registerGuest за допомогою круглих дужок. Ім'я параметра для колбека 
   // може бути довільним, головне пам'ятати, що значенням буде функція.
+
+
+
+ 
