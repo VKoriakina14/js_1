@@ -363,3 +363,405 @@ const pattern = /[^c]ar/g;
 const matches = text.match(pattern);
 console.log(matches);
 
+//Приклад 1
+const text = "apple banana chery";
+const pattern = /[^aeiou]+/g;
+const matches = text.match(pattern);
+console.log(matches);
+
+//Приклад 2
+const str = "Приклад в якому немає англійських букв і цифр";
+// const str = "Loremispum";
+const pattern = /[^\w]/; //Чи є щось, крім англійського алфавіту та цифр?
+console.log(pattern.test(str));
+console.log(str.search(pattern)); 
+
+const str = "98";
+const pattern = /[^\w]/; //Чи є щось, крім англійського алфавіту та цифр?
+console.log(pattern.test(str));
+console.log(str.search(pattern)); 
+
+//Приклад 3 
+const str = "Приклад в якому немає англійських букв і цифр";
+const pattern = /[^а-я]/; //Чи є в нас великі літери? 
+console.log("Перша спроба: " + pattern.test(str));
+console.log(str.search(pattern)); 
+
+
+const str = "приклад";
+const pattern = /[^а-я]/; //Чи є в нас великі літери? 
+console.log("Друга спроба: " + pattern.test(str));
+console.log(str.search(pattern)); 
+
+
+//Приклад 4 
+const names = "file.txt log.txt file_1.txt 1.txt";
+const pattern = /[0-9].txt/g;
+const matches = names.match(pattern);
+console.log(matches);
+
+//Давайте спробуємо знайти дату - 01.01.1999
+// dd.mm.yyyy
+const dates = "01.01.1999 05.08.2015 03.02.2000 07.09.1976 08.08.8888 99.99.2000";
+const pattern = /[0-9][0-9]\.[0-9][0-9]\.[0-9][0-9][0-9][0-9]/g;
+const matches = dates.match(pattern);
+console.log(matches);
+
+
+//Давайте трохи додато валідацію 
+//dd.mm.yyyy
+const dates = "01.01.1999 05.08.2015 03.02.2000 07.09.1976 08.08.8888 99.99.2000";
+const pattern = /[0-3][0-9]\.[0-1][0-9]\.[12][09][0-9][0-9]/g;
+const matches = dates.match(pattern);
+console.log(matches);
+
+
+/* Пояснення:
+[0-3][0-9] — день може бути від 00 до 39. Це не є повністю валідною перевіркою, оскільки дні можуть бути тільки до 31, але це обмежує діапазон до потенційно коректних значень.
+[0-1][0-9] — місяці від 00 до 19, що також не є точною перевіркою (місяць може бути тільки від 01 до 12), але обмежує діапазон.
+[12][09][0-9][0-9] — перевіряє рік, починаючи з 1900 до 2099. */
+
+
+// Давайте окремо розберемо дні. Вони бивають від 1 до 31
+
+
+
+
+ 
+
+
+// 0 - друга може бути від 1 до 9 - 0[1-9]
+// 1,2 - друга може бути від 0 до 9 - [12][0-9]
+// 3 - друга тільки 0 та 1 - 3[01]
+
+
+//0[1-9][12][0-9]3[01]
+
+const dates = "01 02 11 12 13 21 22 23 25 30 31 32 41 42 50";
+const pattern = /0[1-9]|[12][0-9]|3[01]/g;
+const matches = dates.match(pattern);
+console.log(matches)
+
+
+/* --- Квантифікатори та кількісні обмеження  
+
+Квантатори та кількісні обмеження в регулярних виразах дозволяють нам визначити, 
+скількі разів певний символ або група символів повинні з'являтися для того, щоб відповідати шаблону. 
+Це дає можливість задавати точні умови для пошуку або перевірки тексту.
+
+
+
+Вони роблять регулярні вирази більш гнучкими та потужними. Ось декілька типових квантифікаторів: 
+
+
+* — нуль або більше входжень попереднього елементу
++ — один або більше входжень попереднього елементу
+? — нуль або один раз входжень попереднього елементу(робить його не обов'язковим)
+{n} — відповідає точно n входженням попереднього елементу
+{n,} — відповідає принаймні n входженням попереднього елементу
+{n,m} — від n до m входжень попереднього елементу
+{n}? — мінімальний квантифікатор, співставлюється найменьшій можливій кількості входжень
+
+
+Тобто, 
+? - 0 чи 1 повторення
+* - 0 чи більше повторень
++ - 1 чи більше повторення
+
+*/
+
+
+// * - 0 чи більше повторень
+// Приклад 1
+const names = "Осіпов Осіпова Осіпову Осіповаааа";
+const pattern = /Осіпов.*/g;
+const matches = names.match(pattern);
+console.log(matches);
+
+
+// Приклад 2
+const re = /ab*c/; // Або немає, або є скількі завгодно
+console.log(re.test("abc"));
+console.log(re.test("abbbbbbbbbbbbbbbc"));
+console.log(re.test("ac"));
+
+//Приклад 3
+const names = "log.txt log1.txt log2.txt log3.txt log33.txt";
+const pattern = /log\d*\.txt/g;
+const matches = names.match(pattern);
+console.log(matches);
+
+// Також ми можемо вказати кількість повторень
+console.log(/abc/.test("abbc"));
+console.log(/ab{2,4}c/.test("abc"));
+console.log(/ab{2,4}c/.test("abbbbbbbc"));
+console.log(/ab{2,4}c/.test("abbbc"));
+console.log(/ab{2,}c/.test("abbbbbbbbbbbc"));
+console.log(/ab{2,}c/.test("abc"));
+console.log(/ab{2}c/.test("abc"));
+console.log(/ab{2}c/.test("abbc"));
+console.log(/ab{2}c/.test("abbbc"));
+
+
+let str1 = "The number was 9.9997 but we rounded it off to 10.0.";
+const regex = /[0-9]{2,3}/g; // буде знаходити всі підрядки, які складаються з двох або трьох цифр у рядку.
+console.log(regex.test(str1));
+console.log(str1.match(regex));
+
+let str1 = "The number was 9.9997 but we rounded it off to 10.0.";
+const regex = /[0-9]{2,}/g; // означає 2 або більше цифр
+console.log(regex.test(str1));
+console.log(str1.match(regex));
+
+let str1 = "The number was 9.9997 but we rounded it off to 10.0.";
+const regex = /[0-9]{3}/g; // знаходитиме лише 3 цифри, ні меньше і ні більше
+console.log(regex.test(str1));
+console.log(str1.match(regex));
+
+
+// ? - 0 чи 1 повторення
+console.log(/ab?c/.test("abc"));
+console.log(/ab?c/.test("ac"));
+console.log(/ab?c/.test("abbc")); // Рядок "abbc" не відповідає шаблону, оскільки після 'a' і 'b', є ще один 'b', а регулярний вираз очікує максимум один 'b'.
+
+// Ще приклад з ? 
+let str1 = "The car is parked in the garage.";
+const regex = /[T]he/g;
+console.log(regex.test(str1));
+console.log(str1.match(regex));
+
+
+let str1 = "The car is parked in the garage.";
+const regex = /[T]?he/g;
+console.log(regex.test(str1));
+console.log(str1.match(regex));
+
+
+// + - 1 чи більше повторення
+const pattern = /ab+c/;
+console.log(pattern.test("abc"));
+console.log(pattern.test("abbbbbbbbbbbbc"));
+console.log(pattern.test("ac"));
+
+
+//Приклад з +
+let str1 = "The fat cat sat on the mat.";
+const regex = /c.+t/;
+console.log(regex.test(str1));
+console.log(str1.match(regex));
+
+
+
+
+// --- Якоря ---
+
+//  Початок рядка '^'
+let str1 = "Mary had a little lamb";
+const regex = /^Mary/;
+console.log(str1.match(regex));
+
+
+let str1 = "Belle had a little lamb";
+const regex = /^Mary/;
+console.log(str1.match(regex));
+
+
+let str1 = "The car is parked in the garage.";
+const regex = /^(T|t)he/;
+console.log(str1.match(regex));
+
+
+// Кінець рядка '$'
+let str1 = "it's fleece was white as snow";
+const regex = /snow$/;
+console.log(str1.match(regex));
+
+let str1 = "Today was rain";
+const regex = /snow$/;
+console.log(str1.match(regex));
+
+let str1 = "The fat cat. sat on the mat.";
+const regex = /(at\.)$/;
+console.log(str1.match(regex));
+
+
+// Більш складний приклад
+let goodInput = "12:34";
+let badInput = "12:345";
+let badInput1 = "012:34";
+
+const regexp = /^\d\d:\d\d$/;
+console.log(regexp.test(goodInput));
+console.log(regexp.test(badInput));
+console.log(regexp.test(badInput1));
+
+
+// ---- Прапори регулярних виразів ----
+
+
+
+
+
+
+
+
+
+
+// Найпростіший випадок - реєстронезалежний пошук
+
+const str = "Ох вже ця вічно ВОзНЯ з регістром";
+const regex = /возня/;
+
+console.log("Знайшли щось? " + regex.test(str));
+console.log("А що саме? " + str.match(regex));
+
+// А якщо так? 
+const str = "Ох вже ця вічно ВОзНЯ з регістром";
+const regex = /возня/i;
+
+console.log("Знайшли щось? " + regex.test(str));
+console.log("А що саме? " + str.match(regex));
+
+//Ще приклад
+const str = "The fat cat sat on the mat.";
+const regex = /The/ig;
+console.log("А що саме? " + str.match(regex));
+
+
+// Наша задача - замінити мишей на ховрахів
+// Знайдеться все. Нащ перший приклад: 
+const str = "миші щури, знову миші, хом'яки, ховрахи";
+const regexp = /миші/;
+const res = str.replace(regexp, "ховрахи");
+console.log("Було: " + str + "\nСтало: " + res);
+
+
+// спробуємо з прапором - g
+// Знайдеться все. Нащ перший приклад: 
+const str = "миші щури, знову миші, хом'яки, ховрахи";
+const regexp = /миші/g;
+const res = str.replace(regexp, "ховрахи");
+console.log("Було: " + str + "\nСтало: " + res);
+
+
+//Ще приклад 
+const str = "The fat cat sat on the mat.";
+const regexp = /.(at)/;
+console.log(str.match(regexp));
+
+
+const str = "The fat cat sat on the mat.";
+const regexp = /.(at)/g;
+console.log(str.match(regexp));
+
+
+// прапор m (multiline)
+let str = `1е місце: Іванко
+2е місце: Михайло
+3е місце: Ганна`;
+
+console.log(str.match(/^\d/g));
+
+// Виправляємо:
+let str = `1е місце: Іванко
+2е місце: Михайло
+3е місце: Ганна`;
+
+console.log(str.match(/^\d/gm));
+
+
+// Наступна задача - замінити перші літери на * 
+const str ="abc\ndef\nghi";
+const regex = /^[a-z]/g;
+const res = str.replace(regex, "*");
+console.log(res);
+
+//Виправляємо! 
+const str ="abc\ndef\nghi";
+const regex = /^[a-z]/gm;
+const res = str.replace(regex, "*");
+console.log(res);
+
+//Приклад з кінцем речення
+let str = `Іванко: 1
+Михайло: 2
+Ганна: 3`;
+
+console.log(str.match(/\d$/gm));
+
+
+// Посилання у регулярних виразах 
+
+const regex = /['"][^'"]*['"]/;
+let str = "abc\"def\"ghijk";
+// let str = "abc\'def\'ghijk";
+// let str = "abc\"def\'ghijk";
+console.log(str);
+console.log(regex.test(str));
+console.log(str.match(regex));
+
+/* 
+Частину шаблону можна укласти в дужки (...). Це назвається "дужкова групв".
+
+
+У такого вияввлення є два ефекти:
+- Дозволяє помістити частину збігу в окремий масив
+- Якщо встановити квантифікатор після дужок, то він застосовуватиметься до всього вмісту дужки, а не до окремого символу, що стоїть перед ним.
+*/
+
+const str = "Publication Date: 2021-09-06" // Якщо ми хочемо отримати окремі компоненти дат: рік, місяц та день 
+const regex = /(\d{4})-(\d{2})-(\d{2})/;
+const res = str.match(regex);
+console.log(res);
+
+//До групи можно звернутися у шаблоні, використовуючи \N, де N - це номер группи
+let str = `He said: "She's the one!".`;
+let regexp = /['"](.*?)['"]/g; // (.*?) - це неіменована захоплююча група, яка збігається з будь-яким текстом (включаючи пробіли) з найменшою можливою кількістю символів до першого збігу з наступною частиною шаблону.
+console.log(str.match(regexp)); // Результат не той, що хотілось би
+
+//Для того, щоб шаблон шукав закриваючу лапку таку саму, як і відкриваючу, обгорнемо відкриваючі лапки в дужки, створивши захоплюючу групу, а потім використаємо \1, щоб звернутися до цієї групи в шаблоні, гарантуючи, що закриваюча лапка буде такою ж, як і відкриваюча.
+
+
+let str = `He said: "She's the one!." `
+let regexp = /['"](.*?)\1/g;
+console.log(str.match(regexp));
+
+
+// ---- Складніші посилання - зовнішні
+// Згаданий вище replace працює не тільки (і не стільки) з рядками, а й з регулярними виразами
+let str = "12aaa54fhj554b6bmi456nm456";
+console.log("Зразок: " +str);
+
+const regexp = /\d+[a-z]+/; // Пошук послідовностей, які містять одну або більше цифр, за якою слідує .. закінчи речення
+const res = str.replace(regexp, '-+++-');
+console.log("Після редагування: " + res);
+
+// А тепер ми хочемо не просто замінити знайдену групу, а поміняти місцями цифри і літери
+let str = "12aaa54fhj554b6bmi456nm456";
+console.log("Зразок: " +str);
+const regexp = /(\d+)([a-z])+/g; // Замінює те що знайшли в регкесі на |$2-$1|. |$2-$1| - (\d+) - захоплює одну або більше цифр (група 1), і ([a-z])+ — захоплює одну або більше літер (група 2). У заміні ми використовуємо $2 і $1 для перестановки літер і цифр місцями.
+const res = str.replace(regexp, "|$2-$1|");
+console.log("Після редагування: " + res);
+
+// Ще кілька слів про дужні групи
+const str = "Великий і жахливий Вася Пупкін вийшов на ганок";
+console.log("Зразок: " + str);
+
+const regexp = /(Вася)(Пупкін)/;
+// const res = str.replace(regexp, "$2 $1");
+
+//const res = str.replace(regexp, "$1 $`"); // ` - частина рядка до збігу
+//const res = str.replace(regexp, "$1 _$'_"); // ` - частина рядка після збігу
+
+const res = str.replace(regexp, "$1 _$&_"); //  Збіг цілком
+
+console.log(res);
+
+// Якщо скобочна група потрібна нам тільки для угрупування елементів і ми не хочемо "заплямовувати" її захоплюючими групами, ми використовуємо (?:...), яка створює незахоплюючу групу. Це дозволяє нам угруповувати частини шаблону без збереження їх у змінних $1, $2 тощо.
+const str = "Великий і жахливий Петя Пяточкін вийшов на ганок";
+const regexp = /(?:Вася|Петя)\s*(?:Пупкін|Пяточкін)/; // Регулярний вираз шукає вказані підрядки
+const res = str.match(regexp);
+console.log(res);
+
+
+
