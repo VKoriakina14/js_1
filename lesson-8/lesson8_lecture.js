@@ -38,7 +38,7 @@ console.log(list)
 // Що буде виведене у консоль?
 
 const arr = [1, 2, 3];	
-arr.reverse();
+arra.reverse();
 console.log(arr)	
 
 
@@ -92,7 +92,7 @@ console.log("Знаходимо на якому індексі? " + str.search(p
 console.log("А якщо не знайшли? " + str.search(/кіт/)); 
 console.log("Чи знайшли ми цей паттерн, шаблон у наданому реченні? " + pattern.test(str)); // Метод test використовується для перевірки, чи відповідає рядок певному регулярному виразу.
 
-// Однак поки що не сталося нічого, чого не міг би зробити indexOf().
+
 // значок | - внутрішній оператор мови регулярних виразів, що означає "або"
 
 const str1 = "vasja@yahoo.com";
@@ -115,6 +115,8 @@ console.log(str1 +': '+ pattern.test(str1));
 console.log(str2 +': '+	pattern.test(str2));
 console.log(str3 +': '+	pattern.test(str3));
 console.log(str4 +': '+	pattern.test(str4));
+
+
 
 // ---- Метасимволи
 
@@ -204,7 +206,7 @@ console.log(matches)
 // Ще приклад
 let str = "ivaniv_ruslan@yahoo.com";
 const pattern = /.com/;
-console.log(srt + " - "+pattern.test(str));
+console.log(str + " - "+pattern.test(str));
 
 
 str = "ivanov_commer@gmail";
@@ -230,7 +232,7 @@ const pattern = /\//;
 console.log(str1+": "+pattern.test(str1));
 
 
-// пошук '\'
+// пошук '\' один слеш чи два?
 const str1 = 'Строка з \\';
 const pattern = /\\/;
 console.log(str1+": "+pattern.test(str1));
@@ -323,6 +325,8 @@ console.log("На якій позиції? " + str.search(pattern));
 
 /\s/ — будь-який пробільний символ (пробіл, табуляція, новий рядок, тощо).
 
+За вийнятком классу [^...] - відповідає будь-яким символам, але крім тих, які вказані у квадратних дужках
+
 */
 
 
@@ -356,9 +360,17 @@ const pattern = /А[а-я]я/g;
 const matches = names.match(pattern);
 console.log(matches);
 
+
+const str = "Сьогодні 4 день тижня";
+const pattern = /[1-7asd] день тижня/g;
+console.log("Чи є співпадіння? " + pattern.test(str));
+console.log("на якій позиції? " + str.search(pattern));
+
+
+
 // Діапазон "крім"
 // Приклад 0
-const text = "The car parked in the gaarage";
+const text = "The car parked in the garage";
 const pattern = /[^c]ar/g;
 const matches = text.match(pattern);
 console.log(matches);
@@ -396,9 +408,10 @@ console.log(str.search(pattern));
 
 //Приклад 4 
 const names = "file.txt log.txt file_1.txt 1.txt";
-const pattern = /[0-9].txt/g;
+const pattern = /[^0-9].txt/g;
 const matches = names.match(pattern);
 console.log(matches);
+
 
 //Давайте спробуємо знайти дату - 01.01.1999
 // dd.mm.yyyy
@@ -427,6 +440,8 @@ console.log(matches);
 
 
 
+
+
  
 
 
@@ -435,12 +450,18 @@ console.log(matches);
 // 3 - друга тільки 0 та 1 - 3[01]
 
 
+
+
+
+
 //0[1-9][12][0-9]3[01]
 
 const dates = "01 02 11 12 13 21 22 23 25 30 31 32 41 42 50";
 const pattern = /0[1-9]|[12][0-9]|3[01]/g;
 const matches = dates.match(pattern);
 console.log(matches)
+
+
 
 
 /* --- Квантифікатори та кількісні обмеження  
