@@ -1,7 +1,11 @@
 
 /* 1. Що таке масив та як його створити у JavaScript?
 
+
+const arr = [1,2,3,4,5]
+
 2. Що таке елемент масиву та ідекс?
+
 
 3. Що станеться, якщо в масив на 5 елементів записати значения за індексом 10?
 
@@ -9,11 +13,21 @@
 
 5. Як можна вивести на екран yci значения масиву, коли розмір масиву заздалегздь невідомий? 
 
+for of
+forEach
+for 
+
+
+
+
+
 
 
 
 
 6. Що таке цикл for ... of?
+for (const person of persons) {}
+
 
 7. Як можна видалити певне значения з масиву?
 
@@ -22,51 +36,65 @@
 9. Як додати нове значения на початок масиву?
 
 10. Як можна об'еднати два масиви?
+contact() (...)
+
+let cobmined = arr1.contact(arr2) 
+
+let combined = [...arr1, ...arr2]
 
 11. Як можна дізнатися, за яким індексом у массиві розташоване потрібне нам значения?
-
+indexOf();
+lastIndexOf();
 */
+
+/* let arr = [1, 2, 4, 2, 1]
+console.log(arr.indexOf(5));
+console.log(arr.lastIndexOf(5));
+ */
 
 
 // Що буде виведене у консоль?
 
 const list = [1 + 2, 1 * 2, 1 / 2];
-console.log(list)
+console.log(list) // [3, 2, 0.5]
 
 
 
 // Що буде виведене у консоль?
 
 const arr = [1, 2, 3];	
-arra.reverse();
-console.log(arr)	
+arr.reverse();
+console.log(arr);	
 
 
 // Що буде виведене у консоль?
 
 const array = [ 3, 4];
 array.unshift(2);
-array.unshift(0, 1); array.unshift([-1]);
-console.log(array)
+array.unshift(0, 1); 
+array.unshift([-1]);
+console.log(array) // [[-1], 0, 1, 2, 3, 4]
 
 
 // Що буде виведене у консоль?
 
 const words = [ 'a', 'b', 'c']; 
 const result = words.concat(1, [2, [3]]);
-console.log(result)
+console.log(result) // ['a', 'b', 'c', 1, 2, [3]]
 
 
 // Що буде виведене у консоль?
 
-const x = [ 1, 2, 3]; x[-1] = -1;
-console.log(x.length)
+const x = [ 1, 2, 3]; 
+
+x[-1] = 4;
+console.log(x, x.length) 
 
 
 // Що буде виведене у консоль?
 
 const y = [ 1, 5, 10, 15];
-console.log(y.fill(0, 2, 4))
+console.log(y.fill(0, 2, 5))
 
 
 
@@ -93,7 +121,7 @@ console.log("А якщо не знайшли? " + str.search(/кіт/));
 console.log("Чи знайшли ми цей паттерн, шаблон у наданому реченні? " + pattern.test(str)); // Метод test використовується для перевірки, чи відповідає рядок певному регулярному виразу.
 
 
-// значок | - внутрішній оператор мови регулярних виразів, що означає "або"
+// значок | - внутрішній оператор мови регулярних виразів, що означає "або" 
 
 const str1 = "vasja@yahoo.com";
 const str2 = "petja@gmail.com";
@@ -176,7 +204,7 @@ console.log(pattern.test(str));
 
 
 // Але не все так просто!
-let names = "file.txt log.txt file.png ltxt.doc one_txt.jpg"; 
+let names = "txt file.txt log.txt file.png ltxt.doc one_txt.jpg"; 
 let pattern = /.txt/g;
 let matches = names.match(pattern); 
 console.log(matches)
@@ -186,21 +214,21 @@ console.log(matches)
 let sentence = "The car parked in the garage.";
 let pattern = /.ar/g;
 const matches = sentence.match(pattern);
-console.log(matches);
+console.log(matches); 
 
 
 // Бо крапка заміняє будь-який символ!
 const names = "Аня Ася Оля Аля Валя"
 const pattern = /А.я/g;
 const matches = names.match(pattern);
-console.log(matches);
+console.log(matches); 
 
 
 // Щоб використовувати спеціальні символ як звичайний, додайте до нього зворотній слеш: \.
 let names = "file.txt log.txt file.png ltxt.doc one_txt.jpg"; 
 let pattern = /\.txt/g;
 let matches = names.match(pattern); 
-console.log(matches)
+console.log(matches); //
 
 
 // Ще приклад
@@ -211,7 +239,7 @@ console.log(str + " - "+pattern.test(str));
 
 str = "ivanov_commer@gmail";
 const pattern = /.com/;
-console.log(srt + " - "+pattern.test(str));
+console.log(str + " - "+pattern.test(str));
 
 
 // Ще раз, крапка значить будь-який символ !!!
@@ -227,14 +255,14 @@ console.log(str3 +': '+	pattern.test(str3));
 
 
 // пошук '/'
-const str1 = 'Строка з /';
+const str1 = 'Строка з /////////';
 const pattern = /\//;
 console.log(str1+": "+pattern.test(str1));
 
 
 // пошук '\' один слеш чи два?
-const str1 = 'Строка з \\';
-const pattern = /\\/;
+const str1 = '\\\\';
+const pattern = /.\\/; 
 console.log(str1+": "+pattern.test(str1));
 
 
@@ -244,6 +272,7 @@ const str = "У цьому тексті зустрічається символ 
 console.log(str);
 const pattern = /\||\./
 console.log("Тестуємо: " + pattern.test(str));
+
 
 
 
@@ -288,7 +317,7 @@ const matches = names.match(pattern);
 console.log(matches);
 
 // Нам тоді потрібно використовувати пошук за різними значеннями
-const names = "Анна Алла авіпавпа Аркан А@#$а Абба";
+const names = "Анна Алла авіпавпа Аркан А@#$а Абба Ална Анла";
 const pattern = /А[нл][нл]а/g;
 const matches = names.match(pattern);
 console.log(matches);
@@ -348,7 +377,7 @@ const pattern = /[0-9]+/g;
 const matches = text.match(pattern);
 console.log(matches);
 
-// клас [a-zA-Z0-9]
+// клас [a-zA-Z0-9_]
 const text ="Hello123 World_456";
 const pattern = /[a-zA-Z0-9]+/g; 
 const matches = text.match(pattern);
@@ -361,7 +390,7 @@ const matches = names.match(pattern);
 console.log(matches);
 
 
-const str = "Сьогодні 4 день тижня";
+const str = "4 день тижня Сьогодні 4 день тижня";
 const pattern = /[1-7asd] день тижня/g;
 console.log("Чи є співпадіння? " + pattern.test(str));
 console.log("на якій позиції? " + str.search(pattern));
@@ -382,8 +411,8 @@ const matches = text.match(pattern);
 console.log(matches);
 
 //Приклад 2
-const str = "Приклад в якому немає англійських букв і цифр";
-// const str = "Loremispum";
+// const str = "Приклад в якому немає англійських букв і цифр";
+const str = "Loremispum";
 const pattern = /[^\w]/; //Чи є щось, крім англійського алфавіту та цифр?
 console.log(pattern.test(str));
 console.log(str.search(pattern)); 
@@ -552,14 +581,14 @@ console.log(regex.test(str1));
 console.log(str1.match(regex));
 
 
-let str1 = "The car is parked in t he garage.";
+let str1 = "The car is parked in the garage.";
 const regex = /[T]?he/g;
 console.log(regex.test(str1));
 console.log(str1.match(regex));
 
 
 // + - 1 чи більше повторення
-const pattern = /ab+c/;
+const pattern = /ab*c/;
 console.log(pattern.test("abc"));
 console.log(pattern.test("abbbbbbbbbbbbc"));
 console.log(pattern.test("ac"));
@@ -583,7 +612,7 @@ console.log(str1.match(regex));
 
 
 let str1 = "Belle had a little lamb";
-const regex = /^Mary/;
+const regex = /^Mary/; // [^...]
 console.log(str1.match(regex));
 
 
@@ -669,7 +698,7 @@ console.log("Було: " + str + "\nСтало: " + res);
 // спробуємо з прапором - g
 // Знайдеться все. Нащ перший приклад: 
 const str = "миші щури, знову миші, хом'яки, ховрахи";
-const regexp = /миші/; 
+const regexp = /миші/g; 
 const res = str.replace(regexp, "ховрахи");
 console.log("Було: " + str + "\nСтало: " + res);
 
@@ -731,7 +760,7 @@ console.log(regex.test(str));
 console.log(str.match(regex));
 
 /* 
-Частину шаблону можна укласти в дужки (...). Це назвається "дужкова групв".
+Частину шаблону можна укласти в дужки (...). Це назвається "дужкова груп".
 
 
 У такого вияввлення є два ефекти:
@@ -790,6 +819,7 @@ const str = "Великий і жахливий Петя Пяточкін вий
 const regexp = /(?:Вася|Петя)\s*(?:Пупкін|Пяточкін)/; // Регулярний вираз шукає вказані підрядки
 const res = str.match(regexp);
 console.log(res);
+
 
 
 
