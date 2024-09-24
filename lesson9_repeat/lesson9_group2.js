@@ -15,6 +15,14 @@ var name = 'John Smith';
 // Напиши сценарій, який виведе суму всіх елементів массиву.
 
 let values = [10, 20, 4, 6, 11, 9, 125, 1, 8, 0, 3];
+let sum = 0;
+
+for (let index = 0; index < values.length; index++)
+{
+    sum = sum + values[index];
+}
+
+console.log(sum);
 
 //--------------------------------------------------------------------------
 // Завдання - 2
@@ -23,14 +31,30 @@ let values = [10, 20, 4, 6, 11, 9, 125, 1, 8, 0, 3];
 
 let array = [10, 20, -2, 6, 11, -10, 125, -3, 8, 0, 3];
 
+
 //--------------------------------------------------------------------------
 /*  Завдання - 3:
 
         Дано массив. Знайдіть середнє арифметичне значення цього массиву.
-        Виведіть на екран тільки ті значення, які більше цього цього середнього арифметичного значення. */
+        Виведіть на екран тільки ті значення, які більше цього середнього арифметичного значення. */
 
 let massiv = [10, 20, 48, 6, 11, 9, 125, 1, 8, 0, 3, 255, 77, 11, 170, 4, 28];
+// avr = sum / masiv.length
+let sum = 0;
+const newarr =[];
 
+for(let item of massiv){
+    sum +=item;
+}
+let avg = sum / massiv.length; 
+
+for(let item of massiv) {
+    if(item > avg) {
+        newarr.push(item)
+    } 
+}
+
+console.log(newarr);
 //--------------------------------------------------------------------------
 
 /*  Завдання - 4:
@@ -43,11 +67,18 @@ let massiv = [10, 20, 48, 6, 11, 9, 125, 1, 8, 0, 3, 255, 77, 11, 170, 4, 28];
     Pete: 130
   }
 
+ let sum = 0;
+ for(let key in salaries){
+    sum += salaries[key];
+ } 
+
+ console.log(sum);
+
 //--------------------------------------------------------------------------
 
 /*  Завдання - 5:
  Змініть сценарій. 
- Виведіть інформацію тільки про ти користувачів, хто працює в компанії Keebler LLC */
+ Виведіть інформацію тільки про тих користувачів, хто працює в компанії Keebler LLC */
 
 let users = [
     {
@@ -282,6 +313,15 @@ let users = [
     }
 ];
 
+const companyName = "Keebler LLC";
+for(const user of users) {
+    if (user.company.name == companyName) {
+        console.log(user.name)
+    }
+}
+
+
+
 //--------------------------------------------------------------------------
 
 /*  Завдання - 6:
@@ -293,10 +333,23 @@ let users = [
 - getBalance(): повертає поточний баланс рахунку.  */
 
 let BankAccount = {
-    // code here ...
+balance: 0,
+deposit(amount){
+    return this.balance += amount;
+},
+withdraw(amount){
+    if(amount <= this.balance) {
+        return this.balance -= amount;
+    }
+},
+getBalance(){
+    console.log(`Поточний баланс: ${this.balance}`)
 
+}
 };
 
 BankAccount.getBalance();
 BankAccount.deposit(500); BankAccount.getBalance();
 BankAccount.withdraw(100);  BankAccount.getBalance();
+
+
